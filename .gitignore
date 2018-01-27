@@ -1,7 +1,7 @@
-.aux
-.log
-.nav
-.out
-.snm
-.synctex.gz
-.toc
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc

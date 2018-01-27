@@ -1,6 +1,0 @@
-\beamer@endinputifotherversion {3.36pt}
-\select@language {spanish}
-\beamer@sectionintoc {2}{Antecedentes}{3}{0}{1}
-\beamer@subsectionintoc {2}{1}{Sistemas Complejos}{3}{0}{1}
-\beamer@subsectionintoc {2}{2}{Mapeos Discretos}{17}{0}{1}
-\beamer@subsectionintoc {2}{3}{Aut\IeC {\'o}matas Celulares}{27}{0}{1}
