@@ -66,6 +66,7 @@
 \begin{center}
 \includegraphics<+>[height=.5\textheight]{mapeo1}
 \includegraphics<+>[height=.5\textheight]{mapeo2}
+\only<3>{ Programa ``logistica''}
 \includegraphics<+>[width=.8\textwidth]{mapeo3}
 \end{center}
 \end{block}
@@ -127,7 +128,7 @@
 \end{frame}
 
 \begin{frame}[t]
-  \frametitle{Ejemplos}
+  \frametitle{Ejemplos (Programa ``Autómatas Celulares'')}
   \begin{center}
   \only<+> {Regla 90, $E_{0}$=``central'' }
   \only<+> {Regla 94, $E_{0}$=``01110000000000001111100001111'' }
@@ -141,9 +142,12 @@
 \end{frame}
 
 \begin{frame}[t]
-\frametitle{Categorías}
-\begin{itemize}[<+->]
-	\item 
+\frametitle{Clasificación de Wolfram}
+\begin{itemize}[<+-| alert@+>]
+	\item Uniforme
+	\item Cíclico
+	\item Aleatorio
+	\item Complejo
 \end{itemize}
 \end{frame}
 
@@ -162,5 +166,52 @@
   \end{itemize}
   \begin{center}\includegraphics<+>[width=.6\textwidth]{vida1}\end{center}
 \end{frame}
+
+\begin{frame}[t]
+\frametitle{Autómatas en 2D: Regla de la mayoría}
+\begin{itemize}[<+->]
+	\item La vida o muerte de la celda central está dictada por el valor de la mayoría de las celdas de su vecindad de Moore
+\end{itemize}
+\begin{center}
+	\includegraphics<1>[width=.3\textwidth]{moore}
+	\only<2> {Programa ``Manchas''}
+	
+	\includegraphics<2>[width=.5\textwidth]{manchas}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Autómatas en 2D: Patrones de Turing}
+\begin{columns}[t]
+	\column{.7\textwidth}
+	\begin{itemize}[<+->]
+	\item Dos regiones elípticas, concéntricas a la celda central, cuya vida determinan
+	\item Las celdas vivas en la elipse interna constituyen los activadores ($A$)
+	\item Las celdas fuera de la elipse interna pero dentro de la externa constituyen los inhibidores ($I$)
+	\item Hay un factor $w$ que dice que tan potentes son los inhibidores respecto a los activadores ($w=2$, significa que son el doble de potentes)
+	\item Calcular $F = A - w * I$
+	\begin{itemize}[<+->]
+		\item Si $F >0$, la celda central vive
+		\item Si $F<0$, la celda central muere
+		\item Si $F=0$,  la celda central no cambia su valor
+	\end{itemize}
+	\end{itemize}
+	\column{.3\textwidth}
+	\begin{center}
+		\includegraphics<1->[width=.9\textwidth]{fur1}
+	\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Autómatas en 2D: Patrones de Turing}
+\begin{center}
+	Programa ``Fur'' (biblioteca de modelos de Netlogo)
+	
+	\includegraphics<+>[width=.6\textwidth]{fur2}
+\end{center}
+\end{frame}
+
+
 
 \end{document}
