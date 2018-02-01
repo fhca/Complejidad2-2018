@@ -84,8 +84,31 @@
 
 \subsection{Autómatas Celulares}
 \frame{\alert{Autómatas Celulares}}
+
 \begin{frame}[t]
-  \frametitle{Definición}
+  \frametitle{Definición (genérica)}
+  \begin{itemize}[<+->]
+  \item Un AC consiste de autómatas (llamados también celdas o sitios) idénticos, dispuestos uniformemente en los puntos de una látice $D$-dimensional de un espacio discreto. Normalmente D=$1, 2,$ o $3$
+  \item Cada autómata es una variable dinámica y su cambio temporal esta dado por la expresión:
+  $$s_{t+1}(x) = F (s_{t}(x + x_{0}), s_{t}(x + x_{1}),\ldots , s_{t}(x + x_{n-1}))$$
+  \item $s_{t}(x)$ es el estado de un autómata localizado en $x$ en el tiempo $t$
+  \item $F$ es la función de transición de estado
+  \item y $N=\{x_{0}, x_{1}, \ldots, x_{n-1}\}$ es la \textit{vecindad}
+  \item por lo general se aplica la misma $F$ y la misma vecindad uniformemente a todas las posiciones espaciales
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+  \frametitle{Definición (genérica)}
+  \begin{itemize}[<+->]
+  \item Fueron inicialmente desarrolladas por John von Newmann y su colaborador Stanislaw Ulam 
+  \item Constituyen una forma de describir dinámicas espacio-temporales altamente no lineales de una manera simple y concisa
+  \item Se utilizan para diversos campos como la dinámica molecular, hidrodinámica, propiedades físicas de materiales, procesos químicos de reacción-difusión, crecimiento y morfogénesis de organismos vivos, etc. [Sayama p.185 y ss]
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+  \frametitle{AC 1D: Definición práctica}
   \begin{columns}[t]
   \column{.5\textwidth}
   \begin{block}{}
