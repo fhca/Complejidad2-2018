@@ -6,6 +6,10 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage{graphics}
+
+\usepackage{fancyvrb} %fancy verbatim
+\usepackage{color}
+
 \graphicspath{{img/}}
 
 \usetheme{Madrid}
@@ -13,6 +17,7 @@
 \setbeamercovered{transparent}
 
 % \usepackage{beamerthemesplit} // Activate for custom appearance
+
 
 \title{Modelación Basada en Agentes}
 \author{Dr. Felipe Contreras}
@@ -175,6 +180,19 @@
 \end{frame}
 
 \begin{frame}[t]
+\frametitle{Autómatas en 2D: Regla de la mayoría}
+\begin{itemize}[<+->]
+	\item La vida o muerte de la celda central está dictada por el valor de la mayoría de las celdas de su vecindad de Moore
+\end{itemize}
+\begin{center}
+	\includegraphics<1>[width=.3\textwidth]{moore}
+	\only<2> {Programa ``Manchas''}
+	
+	\includegraphics<2>[width=.5\textwidth]{manchas}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]
   \frametitle{Autómatas en 2D: El juego de la vida}
   \begin{itemize}[<+->]
   \item {El conjunto de símbolos es $\sigma=\{0,1\}$, significando 0=``muerta'', 1=``viva''}
@@ -188,19 +206,6 @@
   \end{itemize}
   \end{itemize}
   \begin{center}\includegraphics<+>[width=.6\textwidth]{vida1}\end{center}
-\end{frame}
-
-\begin{frame}[t]
-\frametitle{Autómatas en 2D: Regla de la mayoría}
-\begin{itemize}[<+->]
-	\item La vida o muerte de la celda central está dictada por el valor de la mayoría de las celdas de su vecindad de Moore
-\end{itemize}
-\begin{center}
-	\includegraphics<1>[width=.3\textwidth]{moore}
-	\only<2> {Programa ``Manchas''}
-	
-	\includegraphics<2>[width=.5\textwidth]{manchas}
-\end{center}
 \end{frame}
 
 \begin{frame}[t]
@@ -235,6 +240,162 @@
 \end{center}
 \end{frame}
 
+\begin{frame}[t]
+\frametitle{Autómatas en 2D: Patrones de Turing: Observaciones}
+\begin{itemize}[<+->]
+	\item Nota como para ciertos valores de los parámetros, se observa la formación de patrones de ``manchas'', los cuales no dependen directamente de las reglas o el estado inicial de las celdas.
+	\item Nota como en cierto momento estas ``manchas'', se estabilizan en cierta forma. Aunque algunas manchas, o fronteras de las mismas, podrían no llegar a estabilizarse.
+	\item Nota también que esto aún puede considerarse autómata celular... discute por qué.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[t]
+\frametitle{Percolación: definición}
+\begin{itemize}[<+->]
+	\item Se le llama percolación al traslado de alguna substancia a través de un medio ``poroso''. La substancia avanza siguiendo posiciones adyacentes de dicho medio.
+	\item Ejemplos de esto son: en la ``cafetera de gotitas'', el café que atraviesa el filtro se dice que ha percolado. El petróleo u otros líquidos que se extraen de la tierra, pueden percolar a través de arena o rocas.
+	\item Es relativamente sencilla su modelación mediante autómatas celulares...
+	\item Ver programas ``Fire'' y ``Percolation'', en Netlogo.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Percolación: modelo}
+\begin{itemize}[<+-| alert@+>]
+	\item Una celda puede tener uno de tres estados: ``desocupada'', ``ocupada'' o ``utilizada''.
+	\item El espacio disponible (rectángulo de celdas) se marcan unas celdas como desocupadas y otras como ocupadas, dependiendo de un valor llamado la ``densidad''.
+	\item Luego de esto, en el llamado 1er estado, se marcan como ``utilizadas'', las celdas ocupadas de la columna más a la izquierda\footnote{percolación hacia la derecha, o el renglón de celdas ocupadas de más arriba, para percolar hacia abajo}.
+	\item En el siguiente estado, se marcan como ``utilizadas'', las celdas del siguiente renglón que estén ocupadas y sean adyacentes\footnote{dentro de una vecindad de Moore, por ejemplo} a celdas utilizadas del estado anterior. Y así sucesivamente.
+	\item Se dice que ``percola'' si al menos una celda de la columna de la derecha se torna ``utilizada''.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Percolación: variantes}
+\begin{itemize}[<+->]
+	\item Los modelos de Netlogo presentan unas variantes a esta definición
+	\item En ``fire'', toda celda utilizada ``contagia'' a sus vecinas ocupadas, que pueden estar en columnas anteriores o siguientes.
+	\item En ``percolation'', no hay celdas desocupadas, pero una utilizada ``contagia'' (o no) a cada una de sus dos vecinas del siguiente renglón, con cierta probabilidad, llamada ``porosidad''.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[t]
+\frametitle{Percolación: ejemplos}
+\begin{center}
+\includegraphics<+>[height=.8\textheight]{fire}
+\includegraphics<+>[height=.8\textheight]{percolation}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[t]
+\frametitle{Percolación: obaservaciones}
+\begin{itemize}[<+-| alert@+>]
+	\item Variando la densidad, pudiera no ``percolar''. Dicho de otra forma, habrá un estado en que no haya suficientes celdas ocupadas adyacentes, a celdas utilizadas en el estado anterior.
+	\item Se puede localizar el punto exacto\footnote{en realidad, como interviene el azar, esto depende de la precisión} de densidad en que ya se logra percolar\footnote{de nuevo, como interviene el azar, hay que realizar varios experimentos con la misma densidad, para ver si se obtiene el mismo resultado}.
+	\item Observa que con densidad cero, no percola, y con densidad uno, si. Por lo que es posible encontrar el ``punto a partir del cual, el comportamiento cualitativo del sistema cambia''.
+	\item Nota también que esto aún puede considerarse autómata celular... discute por qué.
+\end{itemize}
+\end{frame}
+
+\section{Modelos Basados en Agentes}
+\frame{\alert{Modelos Basados en Agentes}}
+
+\begin{frame}[t]
+\frametitle{Agentes}
+\begin{itemize}[<+-| alert@+>]
+	\item Agente: elemento individual autónomo de una simulación computacional
+	\item Tiene:
+	\begin{itemize}[<+-| alert@+>]
+		\item Movimiento dentro de un ambiente (``mundo'' en Netlogo)
+		\item Características como memoria (variables)
+		\item La autonomía de acción (funciones) que se le dé
+		\item Capacidad de interactuar con su ambiente y otros agentes
+		\item Los estados son menos claros, pero puede inspeccionarse el estado del sistema en un momento dado
+	\end{itemize}
+	\item En general tienen menos restricciones que los autómatas
+	\item ?`Un agente generaliza los autómatas? o ?`todo se puede modelar con autómatas?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Introducción a Netlogo}
+\begin{itemize}[<+->]
+	\item Lenguaje para Sistemas Complejos desarrollado por Uri Wilensky
+	\item Puede verse como una generalización del lenguaje ``Logo'' (inicialmente desarrollado en el MIT)
+	\item Permite manejar ``agentes'', que son principalmente las ``tortugas'' (que pueden adquirir personalidades), parches (estáticos, pero fuera de eso, son agentes también), y ``ligas'' (aristas entre tortugas, que permiten identificar las relacionadas, de ser necesario)
+	\item Para programas chicos y medianos, su programación es bastante sencilla, para programas grandes, lo mejor es buscar otro lenguaje más avanzado (Python, Java, C, C++)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Elementos de Netlogo}
+\begin{itemize}[<+->]
+	\item Pestaña ``Ejecutar''
+	\begin{itemize}[<+->]
+	\item ``Añadir'' (``Botón'', ``Deslizador'', ``Interruptor'', ``Seleccionador'', ``Entrada'', ``Monitor'', ``Gráfico'', ``Salida'', ``Nota'')
+	\item Velocidad
+	\item ticks
+	\item Actualizar de la Vista (``continuamente'', ``manualmente - ticks'')
+	\item Configuración
+	\item Mundo
+	\item Terminal de Instrucciones, Borrar, observador>
+	\end{itemize}
+	\item Pestaña ``Información'' (Documentación del programa)
+	\item Pestaña ``Código'' (Buscar, Comprobar, Procedimientos, Sangrado automático)
+	\item Menús
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Mundo}
+\begin{itemize}[<+->]
+	\item Es el ambiente donde se mueven los agentes
+	\item Está compuesto de cuadritos contiguos llamados ``parcelas'' o ``parches''
+	\item Consiste de agentes estáticos, ?`generalización de autómatas?
+	\item Cada parche tiene coordenadas (enteras para su centro)
+	\item En ``configuración'' (o ``editar'' con el botón derecho) se pueden modificar sus dimensiones, tamaño de parches, inicio y dirección de coordenadas, condiciones de frontera, etc.
+	\item Se puede desplazar con el ratón, pero es único.
+	\item El origen inicial de sus coordenadas, el parche $(0,0)$ está en el centro.
+	\item Las coordenadas $x$ y $y$ crecen hacia la derecha y hacia arriba, y decrecen en los otros sentidos.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Programas (códigos) iniciales}
+\begin{itemize}[<+->]
+	\item Por lo general en la ventana de código se agregan dos procedimientos: ``setup'' y ``go''
+	\item ``setup'' ajusta las condiciones iniciales para el mundo y demás agentes
+	\item ``go'' pone en marcha cualquier proceso que requiera la simulación
+	\item Además de esto se suelen agregar deslizadores o cuadros de entrada para introducir o modificar los parámetros de la simulación
+	\item El código mínimo para el setup es el siguiente:
+\begin{Verbatim}[commandchars=\\\{\}]
+\color{orange}to setup
+    {\color{blue}clear-all}  ; se abrevia: ca
+    ; agrega aquí inicialización de variables,
+    ;  creación de tortugas, etc.
+    ; nota los espacios a la izq. de estas líneas
+    ;  indicando que están ''dentro'' de setup
+    {\color{blue}reset-ticks}  ; inicializa el contador de pasos (ticks)
+\color{orange}end
+\end{Verbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Programas iniciales}
+\begin{itemize}[<+->]
+	\item Luego de teclear este código, hay que hacer que se ejecute, por ejemplo con un botón cuyo único contenido es la llamada a la función ``setup'':
+\end{itemize}
+\begin{center}{\includegraphics<+>[width=.5\textwidth]{setup}}\end{center}
+
+\end{frame}
 
 
 \end{document}
