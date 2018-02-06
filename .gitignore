@@ -7,3 +7,4 @@
 *.toc
 *.vrb
 progs/.ipynb-checkpoints
+*.tmp.nlogo
