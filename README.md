@@ -3,4 +3,4 @@ Notas y material para el curso de Complejidad 2 semestre 2018-1, Prof. Felipe Co
 
 Tareas (todas las entregas son por correo a Felipe.Contreras @ uacm.edu.mx)
 1. En papel, E0 como en notas, mínimo 10 renglones, completar el AC elemental con reglas 124 y 236. Decir cuantas reglas existen para AC de 1D con vecindad 5 y 3 símbolos [entrega 15 feb]
-2. Leer capítulo 1 del Uri Wilensky, o participas con comentarios o preguntas en la clase del día 13 de feb o entregas un ensayo sobre el capítulo ese día. 
+2. Leer capítulo 1 del Uri Wilensky, la entrega consiste en participación con comentarios o preguntas en la clase del día 13 de feb; o entregar un ensayo sobre el capítulo al día siguiente.
