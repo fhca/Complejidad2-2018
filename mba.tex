@@ -361,7 +361,7 @@
 	\item Cada parche tiene coordenadas (enteras para su centro)
 	\item En ``configuración'' (o ``editar'' con el botón derecho) se pueden modificar sus dimensiones, tamaño de parches, inicio y dirección de coordenadas, condiciones de frontera, etc.
 	\item Se puede desplazar con el ratón, pero es único.
-	\item El origen inicial de sus coordenadas, el parche $(0,0)$ está en el centro.
+	\item El origen de sus coordenadas, el parche $(0,0)$, está en el centro.
 	\item Las coordenadas $x$ y $y$ crecen hacia la derecha y hacia arriba, y decrecen en los otros sentidos.
 \end{itemize}
 \end{frame}
@@ -392,10 +392,58 @@
 \frametitle{Programas iniciales}
 \begin{itemize}[<+->]
 	\item Luego de teclear este código, hay que hacer que se ejecute, por ejemplo con un botón cuyo único contenido es la llamada a la función ``setup'':
+	\begin{center}{\includegraphics[width=.5\textwidth]{setup}}\end{center}
+	\item Para agregar botones basta seleccionar ``Botón'' en el menú, presionar ``Añadir'' y dar click en alguna parte blanca junto al área del mundo (el ``mundo'' es el rectángulo negro de la pestaña ``Ejecutar'').
 \end{itemize}
-\begin{center}{\includegraphics<+>[width=.5\textwidth]{setup}}\end{center}
-
 \end{frame}
+
+\newcommand{\cb}{\color{blue}}
+\newcommand{\cc}{\color{cyan}}
+\newcommand{\cm}{\color{magenta}}
+\newcommand{\cj}{\color{red}}
+
+\begin{frame}[fragile]
+\frametitle{Píntalo de rojo}
+\begin{itemize}[<+->]
+	\item Para que todos los parches realicen un mismo conjunto de acciones, utilizamos ``ask'': (después de teclear este código, agrega los botones necesarios)
+	\begin{Verbatim}[commandchars=\\\{\}]
+{\cc to} setup
+  \cb ca
+  \cb reset-ticks
+\cc end
+
+{\cc to} go
+  {\cb ask} {\cm patches} [
+    {\cb set} {\cm pcolor} \cj red
+  ]
+\cc end
+\end{Verbatim}
+\item ?`Qué pasa cuando presionas ``go'', pero antes haces que se ejecute ``mas lento''?, ?`Siempre es igual?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Tortugas borrachas}
+\begin{itemize}[<+->]
+	\item Veamos la creación y movimiento de tortugas
+\includegraphics[width=.5\textwidth]{tortugas_borrachas}
+\item Esto se puede leer: ``crea 10 tortugas, cada una: baja su pluma'', ``pídele a las tortugas: que apunten a un ángulo al azar en [0, 360); que avancen un paso'', al terminar con las tortugas: ``avanza el reloj''
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Tortugas borrachas}
+\begin{itemize}[<+->]
+	\item Cada tortuga es un caminante al azar 2D. Haz las siguiente prueba:
+	\item Cambia el tamaño y forma del mundo: 200x200, parcela de 1 pixel
+	\item Aumenta la cantidad de tortugas a 10000
+	\item Quítale el pen-down y haz que todas sean blancas
+	\item Modifica el botón ``go'' para que trabaje ``continuamente''
+	\item Cambia el menú de actualización a ``manualmente (ticks)''
+	\item ?`Qué otra forma se te ocurre de generar caminantes al azar 2D?
+\end{itemize}
+\end{frame}
+
 
 
 \end{document}
