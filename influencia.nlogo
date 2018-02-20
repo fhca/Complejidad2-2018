@@ -1,83 +1,103 @@
+turtles-own [memoria fortaleza último-cambio]
+globals [colores]
+
 to setup
   ca
   set-default-shape turtles "circle"
-  ask patches with [pycor > max-pycor - 1] [  ; parches arriba del 80% de la altura
-    sprout 1 [
-      set heading random 178 + 91 ; hacia "abajo"
+  ifelse n-colores <= 14 [
+    set colores n-of n-colores base-colors
+  ][
+    repeat n-colores [
+      set colores lput (approximate-hsb random 360 50 50) colores
     ]
+  ]
+  crt n-agentes [
+    setxy random-xcor random-ycor
+    set memoria []
+    set fortaleza random-float 1 ; control?
+    set último-cambio 0
+    set color one-of colores
   ]
   reset-ticks
 end
 
 to go
   ask turtles [
-    avanza
+    set heading heading + random 90 - 45
+    fd 1
+    observa-t
   ]
   tick
 end
 
-to avanza
-  let delta .5
-  ifelse can-move? 1 [
-    fd 1
-  ][
-    if heading >= 0 and heading < 180 [ ; sup der
-      if xcor >= max-pxcor - delta [ ; derecha
-        set heading 360 - heading
-        fd 1 ;en cada caso, avanza, para no entrar en otros casos
-      ]
-      if ycor >= max-pycor - delta or ycor <= min-pycor + delta [ ; horiz
-        set heading 180 - heading
-        fd 1
-      ]
-    ]
-
-    if heading >= 180 and heading < 360 [ ; inf der
-      if xcor <= min-pxcor + delta [ ; izq
-        set heading 360 - heading
-        fd 1
-      ]
-      if ycor >= max-pycor - delta or ycor <= min-pycor + delta [ ; horiz
-        set heading 540 - heading
-        fd 1
-      ]
-    ]
+to cambia-color
+  if length memoria > 0 [
+    let frecuente first modes memoria ; puede haber mas de uno, toma el primero listado
+    set memoria []  ; reinicia la memoria
+    if random-float 1 > fortaleza [ set color frecuente ]
   ]
 end
 
+; cambia por numero de observaciones
+to observa-m ; observa m agentes y se decide por el color mayoritario
+  foreach [color] of turtles in-radius 2 [ x -> set memoria lput x memoria ]  ; observa tortugas a menos de cierta distancia
+  if length memoria >= m [
+    cambia-color
+  ]
+end
+
+; cambia por tiempo
+to observa-t ; cambia al color que tengan los agentes que recuerde en m ticks
+  foreach [color] of other turtles in-radius 2 [ x -> set memoria lput x memoria ]
+  if ticks > último-cambio + m [
+    cambia-color
+    set último-cambio ticks
+  ]
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+328
 10
-647
-448
+740
+423
 -1
 -1
-13.0
+4.0
 1
 10
 1
 1
 1
 0
-0
-0
 1
--16
-16
--16
-16
+1
+1
+-50
+50
+-50
+50
 1
 1
 1
 ticks
 30.0
 
+INPUTBOX
+7
+10
+77
+70
+n-agentes
+70.0
+1
+0
+Number
+
 BUTTON
-21
-40
-87
+7
+70
 73
+103
 NIL
 setup
 NIL
@@ -91,12 +111,12 @@ NIL
 1
 
 BUTTON
-32
-91
-95
-124
+11
+107
+74
+140
 NIL
-go\n
+go
 T
 1
 T
@@ -107,6 +127,64 @@ NIL
 NIL
 1
 
+SLIDER
+8
+145
+180
+178
+n-colores
+n-colores
+2
+10
+10.0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+6
+187
+178
+220
+m
+m
+1
+100
+100.0
+1
+1
+NIL
+HORIZONTAL
+
+CHOOSER
+103
+11
+241
+56
+distribución
+distribución
+"uniforme"
+0
+
+PLOT
+12
+234
+212
+384
+cantidad de colores
+NIL
+NIL
+0.0
+10.0
+0.0
+100.0
+false
+false
+"" "clear-plot"
+PENS
+"default" 1.0 1 -16777216 true "" "foreach colores [\n  x -> set-plot-pen-color x plotxy (position x colores) (count turtles with [color = x]) / n-agentes * 100\n]"
+
 @#$#@#$#@
 ## WHAT IS IT?
 
@@ -114,7 +192,7 @@ NIL
 
 ## HOW IT WORKS
 
-(what rules the agents use to create the overall behavior of the model)
+Dados n colores de agentes, al acercarse un agente a otro, observa y recuerda su color. Entonces cambia al color que observó más (ya sea después un intervalo de tiempo o después de acercarse a m agentes). Cuando dos agentes se acercan, ambos observan el color del otro y si ya es momento de cambiar de color, lo hacen con cierta probabilidad (fortaleza) individual.
 
 ## HOW TO USE IT
 
