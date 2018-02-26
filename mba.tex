@@ -305,6 +305,7 @@
 \section{Modelos Basados en Agentes}
 \frame{\alert{Modelos Basados en Agentes}}
 
+\subsection{Agentes}
 \begin{frame}[t]
 \frametitle{Agentes}
 \begin{itemize}[<+-| alert@+>]
@@ -322,9 +323,10 @@
 \end{itemize}
 \end{frame}
 
+\subsection{Introducción a Netlogo}
 \begin{frame}[t]
 \frametitle{Introducción a Netlogo}
-\begin{itemize}[<+->]
+\begin{itemize}[<+-| alert@+>]
 	\item Lenguaje para Sistemas Complejos desarrollado por Uri Wilensky
 	\item Puede verse como una generalización del lenguaje ``Logo'' (inicialmente desarrollado en el MIT)
 	\item Permite manejar ``agentes'', que son principalmente las ``tortugas'' (que pueden adquirir personalidades), parches (estáticos, pero fuera de eso, son agentes también), y ``ligas'' (aristas entre tortugas, que permiten identificar las relacionadas, de ser necesario)
@@ -333,9 +335,10 @@
 
 \end{frame}
 
+\subsection{Elementos de Netlogo}
 \begin{frame}[t]
 \frametitle{Elementos de Netlogo}
-\begin{itemize}[<+->]
+\begin{itemize}[<+-| alert@+>]
 	\item Pestaña ``Ejecutar''
 	\begin{itemize}[<+->]
 	\item ``Añadir'' (``Botón'', ``Deslizador'', ``Interruptor'', ``Seleccionador'', ``Entrada'', ``Monitor'', ``Gráfico'', ``Salida'', ``Nota'')
@@ -352,9 +355,10 @@
 \end{itemize}
 \end{frame}
 
+\subsection{Mundo}
 \begin{frame}[t]
 \frametitle{Mundo}
-\begin{itemize}[<+->]
+\begin{itemize}[<+-| alert@+>]
 	\item Es el ambiente donde se mueven los agentes
 	\item Está compuesto de cuadritos contiguos llamados ``parcelas'' o ``parches''
 	\item Consiste de agentes estáticos, ?`generalización de autómatas?
@@ -367,6 +371,7 @@
 \end{frame}
 
 
+\subsection{Programas iniciales}
 \begin{frame}[fragile]
 \frametitle{Programas (códigos) iniciales}
 \begin{itemize}[<+->]
@@ -390,7 +395,7 @@
 
 \begin{frame}[t]
 \frametitle{Programas iniciales}
-\begin{itemize}[<+->]
+\begin{itemize}[<+-| alert@+>]
 	\item Luego de teclear este código, hay que hacer que se ejecute, por ejemplo con un botón cuyo único contenido es la llamada a la función ``setup'':
 	\begin{center}{\includegraphics[width=.5\textwidth]{setup}}\end{center}
 	\item Para agregar botones basta seleccionar ``Botón'' en el menú, presionar ``Añadir'' y dar click en alguna parte blanca junto al área del mundo (el ``mundo'' es el rectángulo negro de la pestaña ``Ejecutar'').
@@ -402,6 +407,7 @@
 \newcommand{\cm}{\color{magenta}}
 \newcommand{\cj}{\color{red}}
 
+\subsection{Píntalo de rojo}
 \begin{frame}[fragile]
 \frametitle{Píntalo de rojo}
 \begin{itemize}[<+->]
@@ -422,9 +428,10 @@
 \end{itemize}
 \end{frame}
 
+\subsection{Tortugas borrachas}
 \begin{frame}[t]
 \frametitle{Tortugas borrachas}
-\begin{itemize}[<+->]
+\begin{itemize}[<+-| alert@+>]
 	\item Veamos la creación y movimiento de tortugas
 \includegraphics[width=.5\textwidth]{tortugas_borrachas}
 \item Esto se puede leer: ``crea 10 tortugas, cada una: baja su pluma'', ``pídele a las tortugas: que apunten a un ángulo al azar en [0, 360); que avancen un paso'', al terminar con las tortugas: ``avanza el reloj''
@@ -433,7 +440,7 @@
 
 \begin{frame}[t]
 \frametitle{Tortugas borrachas}
-\begin{itemize}[<+->]
+\begin{itemize}[<+-| alert@+>]
 	\item Cada tortuga es un caminante al azar 2D. Haz las siguiente prueba:
 	\item Cambia el tamaño y forma del mundo: 200x200, parcela de 1 pixel
 	\item Aumenta la cantidad de tortugas a 10000
@@ -444,25 +451,28 @@
 \end{itemize}
 \end{frame}
 
+\subsection{Confeti}
 \begin{frame}[t]
 \frametitle{Confeti}
-\begin{itemize}[<+->]
+\begin{itemize}[<+-| alert@+>]
 	\item Ilustra: Movimiento de agentes
 \end{itemize}
 
 \end{frame}
 
+\subsection{Pelotas}
 \begin{frame}[t]
 \frametitle{Pelotas}
-\begin{itemize}[<+->]
+\begin{itemize}[<+-| alert@+>]
 	\item Ilustra: Interacción de los agentes y el medio
 	\item Condiciones de frontera
 \end{itemize}
 \end{frame}
 
+\subsection{presaDepredador}
 \begin{frame}[t]
 \frametitle{presaDepredador}
-\begin{itemize}[<+->]
+\begin{itemize}[<+-| alert@+>]
 	\item Ilustra: interacción de agentes entre si
 	\item Presas: Deambulan aleatoriamente, cada cierto tiempo se reproducen
 	\item Depredador: Al encontrar una presa cerca, se la come. Luego de cierto tiempo de no comer, muere. Luego de cierto tiempo, se reproduce.
@@ -470,13 +480,40 @@
 \end{itemize}
 \end{frame}
 
+\subsection{rapidosVSlentos}
 \begin{frame}[t]
 \frametitle{rapidosVSlentos}
-\begin{itemize}[<+->]
+\begin{itemize}[<+-| alert@+>]
 	\item Ilustra: interacción de agentes con medio
 	\item Interacción de agentes entre si
 	\item discutir: emergencia de comportamiento complejo?
 \end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Segregación}
+\begin{itemize}[<+-| alert@+>]
+	\item Esta versión del modelo inicialmente propuesto por Thomas Schelling, simula las interacciones y bloques de comunidades que se segregan (viven junto a los ``suyos'')
+	\item Cada agente que tiene al menos un cierto porcentaje de vecinos de su mismo color (que representa alguna preferencia), se siente ``feliz''.
+	\item Los agentes infelices buscan situarse en alguna otra celda desocupada.
+	\item Con el tiempo los agentes se ponen más felices, pero la vecinadad se hace más segregada
+	\item Basta desear un 30\% de vecinos del mismo color para que acaben con un promedio de 70\% de vecinos del mismo color
+\end{itemize}
+
+\end{frame}
+
+
+\subsection{El Farol}
+\begin{frame}[t]
+\frametitle{El Farol (cap. 3 Uri)}
+\begin{itemize}[<+-| alert@+>]
+	\item Las noches del jueves, en el bar ``El Farol'' de Santa Fe se puede escuchar música irlandesa.
+	\item Pero a veces se llena, y si los clientes piensan que así será, se quedan en casa.
+	\item El modelo entonces representa la asistencia de clientes al bar, siguiendo algunas estrategias. Cada una ayuda al cliente a decidir si asistirá o no esta semana, basándose en que tan lleno estuvo el bar semanas antes (MEMORY-SIZE).
+	\item La mejor estrategia para un cliente sería siempre asistir, ya que no se lo penaliza si el bar se llena. Sin embargo no se trata de optimizar la asistencia si no está lleno, sino el predecir cuando asistir y ver como se comporta el grupo.
+	\item Los clientes usan alguna de NUMBER-STRATEGIES estrategias para decidir asistir o no esta semana, y aunque inicialmente se les asigna la estrategia al azar, este las va puntuando dependiendo de que tan buena le resultó.
+\end{itemize}
+
 \end{frame}
 
 
