@@ -10,7 +10,7 @@
 *.mp
 *.tmp
 *.tui
-progs/series/*
+#progs/series
 progs/.ipynb_checkpoints
 *.tmp.nlogo
 *-checkpoint.ipynb
