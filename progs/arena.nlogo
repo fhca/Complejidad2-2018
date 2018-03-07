@@ -13,14 +13,13 @@ end
 to go
   ask turtles [
     let cercanas other turtles in-radius distancia
-    if any? cercanas [
+    ifelse any? cercanas [
       set color red
       alejarse one-of cercanas
       fd 1
-    ]
+    ][set color white]
   ]
   tick
-  ask turtles [set color white] ; regresa a blanco los inconformes
 end
 
 to empujar
@@ -107,7 +106,7 @@ n
 n
 0
 10000
-6752.0
+5287.0
 1
 1
 NIL
@@ -122,7 +121,7 @@ distancia
 distancia
 0
 10
-2.0
+4.8
 .1
 1
 NIL
