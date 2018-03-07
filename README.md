@@ -9,4 +9,4 @@ Tareas (todas las entregas son por correo a Felipe.Contreras @ uacm.edu.mx)
 
 3. Llenar la sección de "Información" del programa rapidosVSlentos.nlogo [entregar 8 de marzo]
 
-4. Llenar la sección de "información" Y DESCRIBIR COMO FUNCIONA EL CÓDIGO del programa arena.nlogo [entregar 13 de marzo]
+4. Llenar la sección de "información" Y DESCRIBIR COMO FUNCIONA EL CÓDIGO del programa arena.nlogo [entregar 13 de marzo]. (nota: "describir" significa añadirle linea por linea comentarios al código. No dar una definición, sino describirlo, como si lo estuvieran platicando a su sobrinito, paso A, luego paso B, etc...)
