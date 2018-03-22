@@ -14,3 +14,4 @@
 progs/.ipynb_checkpoints
 *.tmp.nlogo
 *-checkpoint.ipynb
+*-checkpoint
