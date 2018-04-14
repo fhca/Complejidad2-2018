@@ -13,7 +13,7 @@ Tareas (todas las entregas son por correo a Felipe.Contreras @ uacm.edu.mx)
 
 5. Descarga un archivo con datos que varíen a lo largo del tiempo (una tabla). Por ejemplo, precios de productos (petróleo, bitcoins, etc.) o datos de salud, etc. de la cual 
 
-	6. extrae una serie de tiempo (trata de que no hayan datos faltantes). **La serie debe contar con al menos 500 valores**.
+	1. extrae una serie de tiempo (trata de que no hayan datos faltantes). **La serie debe contar con al menos 500 valores**.
 	7. Elimínale (y guárdalos en otro arreglo) los 10 valores finales (los vamos a predecir y usaremos estos para verificar nuestra predicción). 
 	8. En seguida, descompónla en tendencia, estacionalidad y residuales. Los residuales deben ser una serie estacionaria con un mínimo de confianza del 90%. 
 	9. Verifica que la serie original se pueda reconstruir. 
